@@ -1,0 +1,24 @@
+
+@media (max-width: 545px) {
+   h1{
+      font-size: 5vw;
+   }
+}
+@media (max-width: 420px) {
+   .contaner-s{
+   display: block;
+   }
+
+   h1{
+      padding-bottom: 10px;
+   }
+}
+
+.card-content{
+   padding: 40px;
+}
+@media (max-width: 1080px) {
+   .card-content{
+      padding: 10px;
+   }
+}

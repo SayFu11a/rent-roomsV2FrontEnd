@@ -1,0 +1,28 @@
+.title{
+   opacity: 0.5;
+   @media (max-width: 762px) {
+      font-size: 12px;
+   }
+   @media (max-width: 658px) {
+      display: none;
+   }
+}
+
+.name{
+   @media (max-width: 472px) {
+      display: none;
+   }
+   
+}
+.iCart{
+   display: flex;
+   // @media (max-width: 354px) {
+   //    display: block;
+   // }
+}
+.container{
+   padding: 40px;
+   @media (max-width: 356px) {
+      padding: 10px;
+   }
+}
