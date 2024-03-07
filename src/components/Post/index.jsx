@@ -1,12 +1,14 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import clsx from 'clsx';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Clear';
 import EditIcon from '@mui/icons-material/Edit';
 import EyeIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import CommentIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
+
+import Button from '@mui/material/Button';
 
 import styles from './Post.module.scss';
 import { UserInfo } from '../UserInfo';
@@ -27,6 +29,8 @@ export const Post = ({
    isLoading,
    isEditable,
 }) => {
+   const navigate = useNavigate();
+
    const dispatch = useDispatch();
    if (isLoading) {
       return <PostSkeleton />;
@@ -36,6 +40,10 @@ export const Post = ({
       if (window.confirm('Вы уверены что хотите удалить статью?')) {
          dispatch(fetchRemovePost(id));
       }
+   };
+
+   const clickPostTitle = () => {
+      navigate('/booking', { state: { title, tags } });
    };
 
    return (
@@ -83,9 +91,13 @@ export const Post = ({
                      <span>{commentsCount}</span>
                   </li>
                   <li>
-                     <button>
-                        <Link to="/booking">Забронировать номер</Link>
-                     </button>
+                     <Button
+                        onClick={clickPostTitle}
+                        variant="outlined"
+                        style={{ color: 'black' }}
+                        className={styles.buttomText}>
+                        Забронировать номер
+                     </Button>
                   </li>
                </ul>
             </div>

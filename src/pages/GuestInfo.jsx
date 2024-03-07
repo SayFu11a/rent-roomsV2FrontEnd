@@ -3,11 +3,16 @@ import { useLocation } from 'react-router-dom';
 
 function GuestInfo() {
    const location = useLocation();
-   const { checkInDate, checkOutDate, contactInfo, guests } = location.state;
+   const { checkInDate, checkOutDate, contactInfo, guests, title, tags } = location.state || {};
+
+   if (!checkInDate || !checkOutDate || !contactInfo || !guests || !title || !tags) {
+      return <p>Ошибка: Невозможно получить информацию о бронировании.</p>;
+   }
 
    return (
       <div>
          <h2>Guest Information</h2>
+         <p>Название номера: {title}</p>
          <p>Check-in Date: {checkInDate}</p>
          <p>Check-out Date: {checkOutDate}</p>
          <p>Contact Information:</p>
@@ -24,6 +29,7 @@ function GuestInfo() {
                </li>
             ))}
          </ul>
+         <p>Цена: {tags}</p>
       </div>
    );
 }

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 
 function BookingPage() {
+   const location = useLocation();
+   const { title, tags } = location.state || {};
    const navigate = useNavigate();
    const [step, setStep] = useState(1);
    const [checkInDate, setCheckInDate] = useState('');
@@ -15,8 +17,13 @@ function BookingPage() {
          setStep(2);
       } else if (step === 2) {
          // If you want to navigate to '/guest-info' here, uncomment the next line
-         navigate('/guest-info', { state: { checkInDate, checkOutDate, contactInfo, guests } });
+         navigate('/guest-info', {
+            state: { checkInDate, checkOutDate, contactInfo, guests, title, tags },
+         });
+
          handleBookingConfirmation();
+
+         console.log(title, tags);
       }
    };
 
@@ -37,6 +44,8 @@ function BookingPage() {
          checkOutDate,
          contactInfo,
          guests,
+         title,
+         tags,
       });
 
       axios
@@ -45,6 +54,8 @@ function BookingPage() {
             checkOutDate,
             contactInfo,
             guests,
+            title,
+            tags,
          })
          .then((response) => {
             console.log('Ответ от сервера:', response.data);

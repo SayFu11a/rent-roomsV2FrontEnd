@@ -99,6 +99,8 @@ $blue: #4361ee;
   list-style: none;
   padding: 0;
   margin: 20px 0 0 0;
+  display: flex;
+  justify-content: space-between; 
 
   li {
     display: inline-flex;
@@ -155,4 +157,17 @@ $blue: #4361ee;
   border-radius: 10px;
   opacity: 0;
   transition: all 0.15s ease-in-out;
+}
+
+.buttomB{
+  margin-right: 0;  // Remove margin-right to prevent extra spacing
+  display: flex;  // Add display: flex
+  align-items: center;  
+  background-color: #000;
+}
+
+.buttomText {
+  background-color: #000;
+
+  color: #fff;
 }
